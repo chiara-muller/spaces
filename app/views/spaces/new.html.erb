@@ -1,0 +1,5 @@
+<%= form_with model: @space do |item| %>
+  <%= item.label :name %>
+  <%= item.text_field :name %>
+<%= item.submit %>
+<% end %>
