@@ -1,0 +1,8 @@
+<%= simple_form_for [@user_id, @space] do |item| %>
+  <%= item.input :capacity %>
+  <%= item.input :space_type %>
+  <%= item.input :address %>
+  <%= item.input :title %>
+  <%= item.input :price %>
+  <%= item.submit "Submit review", class: "btn btn-primary" %>
+<% end %>

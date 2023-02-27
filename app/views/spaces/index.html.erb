@@ -1,0 +1,7 @@
+<h2 class="d-flex justify-content-center">index page</h2>
+
+<%= link_to "list your Space for hire",new_space_path, class: "btn btn danger border" %>
+
+<% @spaces.each do |space| %>
+  <%= link_to space.title, space_path(space) %>
+<% end %>
