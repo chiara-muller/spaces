@@ -1,8 +1,21 @@
-<%= simple_form_for [@user_id, @space] do |item| %>
-  <%= item.input :capacity %>
-  <%= item.input :space_type %>
-  <%= item.input :address %>
-  <%= item.input :title %>
-  <%= item.input :price %>
-  <%= item.submit "Submit review", class: "btn btn-primary" %>
-<% end %>
+<h1 class="text-center mt-3">List your space</h1>
+<div class="container">
+  <div class="row justify-content-center mt-3">
+    <div class="col 12 col-lg-6">
+          <%= simple_form_for [@user_id, @space] do |item| %>
+          <%= item.input :capacity %>
+          <%= item.input :space_type %>
+          <%= item.input :address %>
+          <%= item.input :title %>
+          <%= item.input :price %>
+          <%= item.submit "Book now", class: "btn btn-primary" %>
+          <% end %>
+    </div>
+      <div class="d-flex justify-content-center align-items-center col-lg-4">
+        <form action="/action_page.php">
+        <input type="file" id="myFile" name="filename">
+        <%# <input type="submit"> %>
+        </form>
+      </div>
+  </div>
+</div>

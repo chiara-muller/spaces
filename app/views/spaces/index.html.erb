@@ -1,15 +1,19 @@
-<% @spaces.each do |space| %>
-  <div class="card" style="width: 18rem;">
-    <img class="card-img-top" src="..." alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title"><%= space.title %></h5>
-        <p class="card-text"><%= space.address %></p>
+<div class="container">
+  <div class="row row-cols-4">
+    <% @spaces.each do |space| %>
+      <div class="col mt-5">
+        <div class="card h-100">
+          <img class="card-img-top" src="https://media.istockphoto.com/id/1335247217/vector/loading-icon-vector-illustration.jpg?s=612x612&w=0&k=20&c=jARr4Alv-d5U3bCa8eixuX2593e1rDiiWnvJLgHCkQM=" alt="Card image cap">
+            <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+              <h5 class="card-title"><%= space.title %></h5>
+              <p class="card-text"><%= space.address %></p>
+            </div>
+            <div class="card-footer text-center">
+              <%= link_to "More Info",space_path(space), class: "btn btn-primary"  %>
+              <%= link_to "Book Now", new_space_booking_path(space.id), class:"btn btn-primary" %>
+            </div>
+        </div>
       </div>
-      <div class="btn btn-primary">
-        <%= link_to "More Info",space_path(space) %>
-        <%= link_to new_space_booking_path(space.id), class: "btn btn-primary" do %>
-          <i>Book Now</i>
-         <% end %>
-      </div>
+    <% end %>
   </div>
-<% end %>
+</div>
