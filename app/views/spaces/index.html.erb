@@ -1,22 +1,33 @@
-<h2 class="d-flex justify-content-center">index page</h2>
 
-<%= link_to "list your Space for hire",new_space_path, class: "btn btn danger border" %>
 
-<div class="index">
+<div class="card" style="width: 18rem;">
   <% @spaces.each do |space| %>
-    <div class="single-space">
-      <div>
-        <h4><%= space.title %></h4>
-        <%= space.address %>
+    <img class="card-img-top" src="..." alt="Card image cap">
+
+      <div class="card-body">
+        <h5 class="card-title"><%= space.title %></h5>
+        <p class="card-text"><%= space.address %></p>
       </div>
 
-      <div class="moreinfo">
+      <div class="btn btn-primary">
         <%= link_to "More Info",space_path(space) %>
-        <%= link_to "Edit", edit_space_path(space), class: "ms-3 text-warning"  %>
-        <%= link_to space_path(space.id), data: {turbo_method: :delete, turbo_confirm: "Delete #{space.title}?"} do %>
-        <i class="fas fa-trash-alt"></i>
       </div>
-      <% end %>
-    </div>
+
+        <%# <%= link_to "Edit", edit_space_path(space), class: "ms-3 text-warning"  %>
+        <%# <%= link_to space_path(space.id), data: {turbo_method: :delete, turbo_confirm: "Delete #{space.title}?"} do %>
+        <%# <i class="fas fa-trash-alt"></i> %>
+      </div>
+      <%# <% end %>
+
   <% end %>
 </div>
+
+
+<%# <div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="..." alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div> %>
