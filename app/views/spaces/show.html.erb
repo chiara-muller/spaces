@@ -1,14 +1,19 @@
-<h2><%= @space.title %></h2>
-  <p><strong>Space type:</strong> <%= @space.space_type %></p>
-  <p><strong>Address:</strong> <%= @space.address %></p>
-  <p><strong>Capacity:</strong> <%= @space.capacity %></p>
-  <p><strong>Price:</strong> $<%= @space.price %></p>
-
-<%= link_to "Delete",
-  space_path(@space),
-  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger"
-%>
-
-<%= link_to "Edit", edit_space_path(@space), class: "btn btn-warning" %>
-<%= link_to "Create a New Booking", new_space_booking_path(@space), class: "btn btn-primary" %>
-<%= link_to "Go Back to all lisings", spaces_path, class: "btn btn-info" %>
+ <div class="container">
+  <div class ="row justify-content-center mt-5">
+    <div class="col 12 col-lg-6">
+      <img class="card-img-top" src="https://thumbor.forbes.com/thumbor/fit-in/900x510/https://www.forbes.com/home-improvement/wp-content/uploads/2022/02/featured_image_backyard_landscaping_before_and_after.jpeg.jpg" alt="Card image cap">
+        <div class="card-body" style="height: 300px; overflow-y: auto;">
+          <%# class="dark:bg-neutral-700 p-4 m-8 rounded-lg bg-white"> %>
+          <%# class="block rounded-lg bg-white p-10 m-8 dark:bg-neutral-700"> %>
+          <h2><%= @space.title %></h2>
+            <p><strong>Space type:</strong> <%= @space.space_type %></p>
+            <p><strong>Address:</strong> <%= @space.address %></p>
+            <p><strong>Capacity:</strong> <%= @space.capacity %></p>
+            <p><strong>Price:</strong> $<%= @space.price %></p>
+            <%= link_to "Create a New Booking", new_space_booking_path(@space), class: "btn btn-primary" %>
+            <%= link_to "Go Back to all lisings", spaces_path, class: "btn btn-info" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
