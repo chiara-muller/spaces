@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   resources :bookings, only: [:index, :show, :edit, :update, :destroy]
+  get 'my_bookings', to: 'bookings#all_my_bookings'
+  get 'my_bookings/:id', to: 'bookings#show_my_bookings', as: 'my_bookings_show'
 end

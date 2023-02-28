@@ -5,11 +5,12 @@
         <div class="card-body" style="height: 300px; overflow-y: auto;">
           <%# class="dark:bg-neutral-700 p-4 m-8 rounded-lg bg-white"> %>
           <%# class="block rounded-lg bg-white p-10 m-8 dark:bg-neutral-700"> %>
-          <h2><%= @space.title %></h2>
-            <p><strong>Space type:</strong> <%= @space.space_type %></p>
-            <p><strong>Address:</strong> <%= @space.address %></p>
-            <p><strong>Capacity:</strong> <%= @space.capacity %></p>
-            <p><strong>Price:</strong> $<%= @space.price %></p>
+          <h2><%= @booking.space.title %></h2>
+            <p><strong>Booking from</strong> <%= @booking.start_date_time %> <strong>to</strong>
+            <%= @booking.end_date_time %></p>
+            <p><strong>Title:</strong> <%= @booking.space.title %></p>
+            <p><strong>Address:</strong> <%= @booking.space.address %></p>
+            <p><strong>Price:</strong> $<%= @booking.space.price %></p>
           <%= link_to "Create a New Booking", new_space_booking_path(@space), class: "btn btn-primary" %>
             <%= link_to "Go Back to all lisings", spaces_path, class: "btn btn-primary" %>
         </div>
