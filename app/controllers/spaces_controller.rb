@@ -35,7 +35,7 @@ class SpacesController < ApplicationController
   def destroy
     @space = Space.find(params[:id])
     @space.destroy
-    redirect_to spaces_path
+    redirect_to spaces_path, status: :see_other
   end
 
   private

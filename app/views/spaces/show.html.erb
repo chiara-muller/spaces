@@ -4,7 +4,13 @@
   <p><strong>Capacity:</strong> <%= @space.capacity %></p>
   <p><strong>Price:</strong> $<%= @space.price %></p>
 
-  <%= link_to "Edit", edit_space_path(@space), class: "btn btn-warning" %>
-  <%= link_to "Delete", space_path(@space), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+<%= link_to "Delete",
+  space_path(@space),
+  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+%>
 
-  <%= link_to "Go Back to all lisings", spaces_path, class: "btn btn-primary" %>
+<%= link_to "Edit", edit_space_path(@space) %>
+
+
+
+<%= link_to "Go Back to all lisings", spaces_path, class: "btn btn-primary" %>
