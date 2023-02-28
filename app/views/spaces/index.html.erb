@@ -1,33 +1,15 @@
-
-
 <% @spaces.each do |space| %>
   <div class="card" style="width: 18rem;">
     <img class="card-img-top" src="..." alt="Card image cap">
-
       <div class="card-body">
         <h5 class="card-title"><%= space.title %></h5>
         <p class="card-text"><%= space.address %></p>
       </div>
-
       <div class="btn btn-primary">
         <%= link_to "More Info",space_path(space) %>
+        <%= link_to new_space_booking_path(space.id), class: "btn btn-primary" do %>
+          <i>Book Now</i>
+         <% end %>
       </div>
-
-        <%# <%= link_to "Edit", edit_space_path(space), class: "ms-3 text-warning"  %>
-        <%# <%= link_to space_path(space.id), data: {turbo_method: :delete, turbo_confirm: "Delete #{space.title}?"} do %>
-        <%# <i class="fas fa-trash-alt"></i> %>
-      </div>
-      <%# <% end %>
-
   </div>
 <% end %>
-
-
-<%# <div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="..." alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div> %>
