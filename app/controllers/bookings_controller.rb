@@ -26,6 +26,15 @@ class BookingsController < ApplicationController
     end
   end
 
+  def all_my_bookings
+    @user_id = 1
+    @bookings = Booking.where(user_id: @user_id)
+  end
+
+  def show_my_bookings
+    @booking = Booking.find(params[:id])
+  end
+
   private
 
   def booking_params
