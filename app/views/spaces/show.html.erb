@@ -6,16 +6,12 @@
           <%# class="dark:bg-neutral-700 p-4 m-8 rounded-lg bg-white"> %>
           <%# class="block rounded-lg bg-white p-10 m-8 dark:bg-neutral-700"> %>
           <h2><%= @space.title %></h2>
-            <p><strong>Space type:</strong> <%= @space.space_type %></p>
-            <p><strong>Address:</strong> <%= @space.address %></p>
-            <p><strong>Capacity:</strong> <%= @space.capacity %></p>
-            <p><strong>Price:</strong> $<%= @space.price %></p>
-          <%= link_to "Delete",
-            space_path(@space),
-            data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-          %>
-          <%= link_to "Edit", edit_space_path(@space) %>
+          <p><strong>Space type:</strong> <%= @space.space_type %></p>
+          <p><strong>Address:</strong> <%= @space.address %></p>
+          <p><strong>Capacity:</strong> <%= @space.capacity %></p>
+          <p><strong>Price:</strong> $<%= @space.price %></p>
           <%= link_to "Go Back to all lisings", spaces_path, class: "btn btn-primary" %>
+          <%= link_to "Book Now", new_space_booking_path(@space), class: "btn btn-primary" %>
         </div>
       </div>
     </div>
