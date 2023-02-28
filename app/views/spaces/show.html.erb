@@ -6,11 +6,9 @@
 
 <%= link_to "Delete",
   space_path(@space),
-  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger"
 %>
 
-<%= link_to "Edit", edit_space_path(@space) %>
-
-
-
-<%= link_to "Go Back to all lisings", spaces_path, class: "btn btn-primary" %>
+<%= link_to "Edit", edit_space_path(@space), class: "btn btn-warning" %>
+<%= link_to "Create a New Booking", new_space_booking_path(@space), class: "btn btn-primary" %>
+<%= link_to "Go Back to all lisings", spaces_path, class: "btn btn-info" %>

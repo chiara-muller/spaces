@@ -1,6 +1,6 @@
 <h2 class="d-flex justify-content-center">index page</h2>
 
-<%= link_to "list your Space for hire",new_space_path, class: "btn btn danger border" %>
+<%= link_to "list your Space for hire", new_space_path , class:"btn btn-primary"%>
 
 <div class="index">
   <% @spaces.each do |space| %>
@@ -11,12 +11,15 @@
       </div>
 
       <div class="moreinfo">
-        <%= link_to "More Info",space_path(space) %>
-        <%= link_to "Edit", edit_space_path(space), class: "ms-3 text-warning"  %>
-        <%= link_to space_path(space.id), data: {turbo_method: :delete, turbo_confirm: "Delete #{space.title}?"} do %>
+        <%= link_to "More Info",space_path(space), class: "btn btn-success" %>
+        <%= link_to "Edit", edit_space_path(space), class: "btn btn-info"  %>
+        <%= link_to new_space_booking_path(space.id), class: "btn btn-primary" do %>
+          <i>Book Now</i>
+        <% end %>
+        <%= link_to space_path(space.id), data: {turbo_method: :delete, turbo_confirm: "Delete #{space.title}?"}, class: "btn btn-danger" do %>
         <i class="fas fa-trash-alt"></i>
-      </div>
       <% end %>
+      </div>
     </div>
   <% end %>
 </div>
