@@ -1,0 +1,6 @@
+<%= simple_form_for [@space, @booking] do |item| %>
+  <%= item.input :start_date_time, as: :date, html5: true %>
+  <%= item.input :end_date_time, as: :date, html5: true %>
+  <%=%>
+  <%= item.submit "Book Space", class: "btn btn-primary" %>
+<% end %>
