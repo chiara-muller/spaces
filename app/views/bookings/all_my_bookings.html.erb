@@ -5,7 +5,12 @@
         <h5 class="card-title"><%= booking.space.title %></h5>
         <p class="card-text"><%= booking.space.address %></p>
       </div>
+      <div>
         <%= link_to "More Info", my_bookings_show_path(id: booking.id) %>
+        <%= link_to booking_path(booking.id), data: {turbo_method: :delete, turbo_confirm: "Cancel Booking for #{booking.space.title}?"} do %>
+        <i class="fas fa-trash-alt"></i>
+        <% end %>
+         <%= link_to "Edit", edit_booking_path(booking.id) %>
       </div>
   </div>
 <% end %>
