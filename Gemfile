@@ -28,6 +28,8 @@ gem "stimulus-rails"
 gem "jbuilder"
 
 gem "devise"
+
+gem "cloudinary"
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
@@ -70,7 +72,6 @@ group :development do
   # gem "spring"
 end
 
-gem "simple_form", github: "heartcombo/simple_form"
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
