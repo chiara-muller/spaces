@@ -3,8 +3,8 @@
     <% @spaces.each do |space| %>
       <div class="col mt-5">
         <div class="card h-100">
-          <img class="card-img-top" src="https://media.istockphoto.com/id/1335247217/vector/loading-icon-vector-illustration.jpg?s=612x612&w=0&k=20&c=jARr4Alv-d5U3bCa8eixuX2593e1rDiiWnvJLgHCkQM=" alt="Card image cap">
             <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+              <%= cl_image_tag space.photo.key || "https://media.istockphoto.com/id/1335247217/vector/loading-icon-vector-illustration.jpg?s=612x612&w=0&k=20&c=jARr4Alv-d5U3bCa8eixuX2593e1rDiiWnvJLgHCkQM=", class:"card-img-top", height: 300, width: 400, crop: :fill %>
               <h5 class="card-title"><%= space.title %></h5>
               <p class="card-text"><%= space.address %></p>
             </div>
