@@ -7,8 +7,13 @@
   <%=%>
   <%= item.submit "Book Space", class: "btn btn-primary" %>
 <% end %>
-    <input type="text" class="form-control" placeholder="Start date" aria-label="Start date">
-  </div>
-    <input type="text" class="form-control" placeholder="End date" aria-label="End date">
-  </div>
+
+All the bookings for this space are listed below:
+<div>
+    <% @space.bookings.each do |booking| %>
+      <div>
+        <strong>From</strong><td><%= booking.start_date_time %></td> <strong>To</strong>
+        <td><%= booking.end_date_time %></td>
+      </div>
+    <% end %>
 </div>

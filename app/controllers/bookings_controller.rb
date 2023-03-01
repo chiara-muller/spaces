@@ -19,11 +19,38 @@ class BookingsController < ApplicationController
     @user_id = 1
     @booking.user_id = @user_id
     @booking.space = @space
-    if @booking.save!
-      redirect_to space_path(@space)
+    if @booking.save
+      flash[:success]
+      redirect_to my_bookings_show_path(@booking)
     else
-      render :new
+      flash[:error] = @booking.errors.full_messages.join(', ')
+      render :new, status: :unprocessable_entity
     end
+  end
+
+  def all_my_bookings
+    @user_id = 1
+    @bookings = Booking.where(user_id: @user_id)
+  end
+
+  def show_my_bookings
+    @booking = Booking.find(params[:id])
+  end
+
+  def destroy
+    @booking = Booking.find(params[:id])
+    @booking.destroy
+    redirect_to my_bookings_path, status: :see_other
+  end
+
+  def edit
+    @booking = Booking.find(params[:id])
+  end
+
+  def update
+    @booking = Booking.find(params[:id])
+    @booking.update(booking_params)
+    redirect_to my_bookings_show_path(@booking)
   end
 
   private

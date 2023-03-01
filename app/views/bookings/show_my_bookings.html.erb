@@ -1,0 +1,23 @@
+ <div class="container">
+  <div class ="row justify-content-center mt-5">
+    <div class="col 12 col-lg-6">
+      <img class="card-img-top" src="https://thumbor.forbes.com/thumbor/fit-in/900x510/https://www.forbes.com/home-improvement/wp-content/uploads/2022/02/featured_image_backyard_landscaping_before_and_after.jpeg.jpg" alt="Card image cap">
+        <div class="card-body" style="height: 300px; overflow-y: auto;">
+          <div class="dark:bg-neutral-700 p-4 m-8 rounded-lg bg-white">
+              <div class="block rounded-lg bg-white p-10 m-8 dark:bg-neutral-700">
+                <h2><%= @booking.space.title %></h2>
+                <p><strong>Booking from</strong> <%= @booking.start_date_time %> <strong>to</strong> <%= @booking.end_date_time %></p>
+                <p><strong>Title:</strong> <%= @booking.space.title %></p>
+                <p><strong>Address:</strong> <%= @booking.space.address %></p>
+                <p><strong>Price:</strong> $<%= @booking.space.price %></p>
+                <%= link_to "Go Back to all Listings", spaces_path, class: "btn btn-primary" %>
+                <%= link_to "Go Back to my bookings", my_bookings_path , class: "btn btn-primary" %>
+                <%= link_to "Change Booking", edit_booking_path, class: "btn btn-primary" %>
+                <%= link_to "Cancel Booking", booking_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-primary" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
