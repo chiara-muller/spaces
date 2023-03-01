@@ -4,7 +4,7 @@
         <div class="card-body" style="height: 300px; overflow-y: auto;">
           <%# class="dark:bg-neutral-700 p-4 m-8 rounded-lg bg-white"> %>
           <%# class="block rounded-lg bg-white p-10 m-8 dark:bg-neutral-700"> %>
-            <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+            <%= cl_image_tag @space.photo.key, height: 300, width: 400, crop: :fill %>
             <h2><%= @space.title %></h2>
             <p><strong>Space type:</strong> <%= @space.space_type %></p>
             <p><strong>Address:</strong> <%= @space.address %></p>
