@@ -1,32 +1,29 @@
 <div class="navbar navbar-expand-lg navbar-light navbar-lewagon">
   <div class="container-fluid">
-      <%= link_to image_tag("/assets/spaces.png"), spaces_path, class:"navbar-brand" %>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-      <div class="row justify-content-center">
-        <div class="col-12 col-lg-6">
-          <input class="w-full text-center p-2 border border-gray-300 text-gray-900 rounded-pill placeholder-gray-900 font-bold"
-          type="search" placeholder="Search for spaces">
+    <%= link_to spaces_path, class:"navbar-brand" do %>
+    <%= image_tag("spaces.png", height: '100', width: '100') %>
+    <% end %>
+    <div class="pointer-events-none row position-absolute w-full md:justify-center">
+      <div class="col-8 col-lg-3">
+        <input class="pointer-events-auto w-100 text-center p-2 border border-gray-300 text-gray-900 rounded-pill placeholder-gray-900"
+        type="search" placeholder="Search for spaces">
+      </div>
+    </div>
+    <div>
+      <%= link_to "List your space", new_space_path, class:"nav-link hidden md:block" %>
+      <%# mobile menu %>
+      <div class="block md:hidden">
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown button
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
         </div>
       </div>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
-          <li>
-            <%= link_to "List your space", new_space_path, class:"nav-link" %>
-          </li>
-          <li class="nav-item dropdown">
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" data-turbo-method="delete" href="#">Log out</a>
-              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete},
-                class: "dropdown-item" %>
-            </div>
-          </li>
-          <!--li class="nav-item"-->
-          <!--/li-->
-      </ul>
     </div>
   </div>
 </div>
