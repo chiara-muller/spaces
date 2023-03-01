@@ -4,3 +4,49 @@
 @import "form_legend_clear";
 @import "navbar";
 @import "footer";
+
+
+.container-1 {
+  width: 900px;
+  margin: auto;
+}
+
+.banner {
+  background-size: cover;
+  background-position: center;
+  padding: 200px 0;
+}
+
+.banner h1 {
+  font-size: 35px;
+  color: white;
+}
+
+.banner p {
+  font-size: 20px;
+  color: white;
+}
+
+.card {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 20px;
+}
+
+.card-img-top {
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20Px;
+}
+
+.btn-info {
+  width: 100%;
+  display: block;
+}
+
+.card-show {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 20px;
+  flex-direction: row;
+}
+.card-show img {
+  width: 30%;
+}

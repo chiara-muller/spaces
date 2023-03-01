@@ -11,13 +11,15 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-
-          <%= render "shared/navbar" %>
-          <%= yield %>
-          <%= render "shared/footer" %>
-          <p class="notice"><%= notice %></p>
-          <p class="alert"><%= alert %></p>
-        </div>
+  <body>
+    <header>
+      <div class="d-flex flex-column min-vh-100">
+        <%= render "shared/navbar" %>
+        <%= yield %>
+        <%= render "shared/footer" %>
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+      </div>
     </header>
   </body>
 </html>

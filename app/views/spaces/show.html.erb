@@ -1,23 +1,18 @@
  <div class="container">
-  <div class ="row justify-content-center mt-5">
-    <div class="col 12 col-lg-6">
-        <div class="card-body" style="height: 300px; overflow-y: auto;">
-          <%# class="dark:bg-neutral-700 p-4 m-8 rounded-lg bg-white"> %>
-          <%# class="block rounded-lg bg-white p-10 m-8 dark:bg-neutral-700"> %>
-            <%= cl_image_tag @space.photo.key, height: 300, width: 400, crop: :fill %>
+  <div class ="row justify-content-center mt-3">
+    <div class="col 12 col-lg-6 card-show mt-3">
+      <div class="card h-100">
+        <%= cl_image_tag @space.photo.key || "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/claude-monets-house-and-gardens-in-giverny-france-news-photo-1042013294-1562610151.jpg?crop=1.00xw:0.753xh;0,0.0671xh&resize=640:*", class:"card-img-top mx-auto w-100" %>
+          <div class="card-body">
             <h2><%= @space.title %></h2>
             <p><strong>Space type:</strong> <%= @space.space_type %></p>
             <p><strong>Address:</strong> <%= @space.address %></p>
             <p><strong>Capacity:</strong> <%= @space.capacity %></p>
             <p><strong>Price:</strong> $<%= @space.price %></p>
-          <%= link_to "Delete",
-            space_path(@space),
-            data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
-            class: "btn btn-danger"
-          %>
-          <%= link_to "Edit", edit_space_path(@space), class:"btn btn-warning" %>
-          <%= link_to "All listings", spaces_path, class: "btn btn-primary" %>
-          <%= link_to "Book Now", new_space_booking_path(@space), class: "btn btn-primary" %>
+          </div>
+          <div class="card-footer text-center">
+            <%= link_to "Book Now", new_space_booking_path(@space), class: "btn btn-primary" %>
+          </div>
         </div>
       </div>
     </div>
