@@ -1,0 +1,11 @@
+<% @bookings.each do |booking| %>
+  <div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="..." alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title"><%= booking.space.title %></h5>
+        <p class="card-text"><%= booking.space.address %></p>
+      </div>
+        <%= link_to "More Info", my_bookings_show_path(id: booking.id) %>
+      </div>
+  </div>
+<% end %>
