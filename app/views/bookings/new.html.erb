@@ -1,10 +1,9 @@
+
 <div class="row g-3">
 <%= simple_form_for [@space, @booking] do |item| %>
   <div class="col">
-  <%= item.input :start_date_time, as: :date, html5: true, class:"form-control" %>
-  <div class="col">
-  <%= item.input :end_date_time, as: :date, html5: true, class:"form-control" %>
-  <%=%>
+<%= item.input :start_date_time, as: :date, html5: true, class: "form-control booking-start", data: { "disable-dates": "disableBookedDates" } %>
+<%= item.input :end_date_time, as: :date, html5: true, class: "form-control booking-end" %>
   <%= item.submit "Book Space", class: "btn btn-primary" %>
 <% end %>
 
