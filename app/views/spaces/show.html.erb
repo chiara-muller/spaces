@@ -4,12 +4,17 @@
         <div class="card-body" style="height: 300px; overflow-y: auto;">
           <%# class="dark:bg-neutral-700 p-4 m-8 rounded-lg bg-white"> %>
           <%# class="block rounded-lg bg-white p-10 m-8 dark:bg-neutral-700"> %>
-            <%# <%= cl_image_tag @space.photo.key, height: 300, width: 400, crop: :fill %>
-            <h2><%= @space.title %></h2>
-            <p><strong>Space type:</strong> <%= @space.space_type %></p>
-            <p><strong>Address:</strong> <%= @space.address %></p>
-            <p><strong>Capacity:</strong> <%= @space.capacity %></p>
-            <p><strong>Price:</strong> $<%= @space.price %></p>
+          <% if @space.photos.attached? %>
+            <% @space.photos.each do |photo| %>
+              <%= cl_image_tag photo.key, height: 300, crop: :fill %>
+            <% end %>
+          <%# else %>
+          <% end %>
+          <h2><%= @space.title %></h2>
+          <p><strong>Space type:</strong> <%= @space.space_type %></p>
+          <p><strong>Address:</strong> <%= @space.address %></p>
+          <p><strong>Capacity:</strong> <%= @space.capacity %></p>
+          <p><strong>Price:</strong> $<%= @space.price %></p>
           <%= link_to "Delete",
             space_path(@space),
             data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
