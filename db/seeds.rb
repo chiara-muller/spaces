@@ -10,6 +10,12 @@
 # User.create!(email: 'user2@example.com', password: 'password456')
 # User.create!(email: 'user3@example.com', password: 'password789')
 
-40.times do
-  Space.create!(capacity: '600', space_type: "garden", address: "45, event st", title: "My beauiful place", price: '70')
-end
+require 'faker'
+puts "creating seed file..."
+Space.create!(capacity: Faker::Number.number(digits: 2),
+              space_type: "garden",
+              address: Faker::Address.full_address,
+              title: "My beautiful garden",
+              price: Faker::Number.number(digits: 3)
+              )
+puts "finished seeding"
