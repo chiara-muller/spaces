@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   delete 'my_bookings/:id', to: 'bookings#delete', as: 'my_bookings_delete'
   get 'my_bookings/:id/edit', to: 'bookings#edit', as: 'my_bookings_edit'
   patch 'my_bookings/:id', to: 'bookings#update', as: 'my_bookings_update'
+  get 'confirm_listing/:id', to: 'spaces#confirm_listing', as: 'confirm_listing'
 end

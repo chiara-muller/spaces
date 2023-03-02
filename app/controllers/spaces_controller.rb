@@ -5,6 +5,7 @@ class SpacesController < ApplicationController
 
   def show
     @space = Space.find(params[:id])
+    @booking = Booking.new
   end
 
   def new
@@ -16,7 +17,7 @@ class SpacesController < ApplicationController
     @space = Space.new(space_params)
     @space.user_id = @user_id
     if @space.save
-      redirect_to space_path(@space)
+      redirect_to confirm_listing_path(@space)
     else
       render :new
     end
@@ -26,10 +27,14 @@ class SpacesController < ApplicationController
     @space = Space.find(params[:id])
   end
 
+  def confirm_listing
+    @space = Space.find(params[:id])
+  end
+
   def update
     @space = Space.find(params[:id])
     @space.update(space_params)
-    redirect_to space_path(@space)
+    redirect_to confirm_listing_path(@space)
   end
 
   def destroy
