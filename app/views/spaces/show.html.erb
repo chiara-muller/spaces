@@ -25,19 +25,23 @@
 
 
 <div class="row g-3">
-<%= simple_form_for [@space, @booking] do |item| %>
-  <div class="col">
-<%= item.input :start_date_time, as: :date, html5: true, class: "form-control booking-start", data: { "disable-dates": "disableBookedDates" } %>
-<%= item.input :end_date_time, as: :date, html5: true, class: "form-control booking-end" %>
-  <%= item.submit "Book Space", class: "btn btn-primary" %>
-<% end %>
-
-All the bookings for this space are listed below:
-<div>
-    <% @space.bookings.each do |booking| %>
-      <div>
-        <strong>From</strong><td><%= booking.start_date_time %></td> <strong>To</strong>
-        <td><%= booking.end_date_time %></td>
-      </div>
+  <div class="booking_form">
+    <div id='space-booking-dates' data-unavailable="<%= @space.unavailable_dates.to_json %>">
+    <%= simple_form_for [@space, @booking = Booking.new], data: { controller: 'flatpickr' } do |item| %>
+    <%= item.input :start_date_time, as: :string, input_html: { data: { flatpickr_target: "startTime" } } %>
+    <%= item.input :end_date_time, as: :string, input_html: { data: { flatpickr_target: "endTime" } } %>
+    <%= item.submit "Book Space", class: "btn btn-primary" %>
     <% end %>
+
+    All the bookings for this space are listed below:
+    <div>
+        <% @space.bookings.each do |booking| %>
+          <div>
+            <strong>From</strong><td><%= booking.start_date_time %></td> <strong>To</strong>
+            <td><%= booking.end_date_time %></td>
+          </div>
+        <% end %>
+        </div>
+    </div>
+  </div>
 </div>

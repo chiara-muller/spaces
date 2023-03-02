@@ -6,6 +6,7 @@ class Booking < ApplicationRecord
   validates :start_date_time, presence: true
   validates :end_date_time, presence: true
   validate :no_overlapping_bookings
+  validate :end_date_time_after_start_date_time
 
   def no_overlapping_bookings
     overlapping_bookings = space.bookings.where.not(id: id).where(
@@ -27,6 +28,14 @@ class Booking < ApplicationRecord
   def end_date_time_cannot_be_in_the_past
     if end_date_time.present? && end_date_time <= Time.now
       errors.add(:end_date_time, "can't be in the past and the bookings cant be shorter than a day")
+    end
+  end
+
+  def end_date_time_after_start_date_time
+    return if end_date_time.blank? || start_date_time.blank?
+
+    if end_date_time < start_date_time
+      errors.add(:end_date_time, "must be after the start date")
     end
   end
 end
