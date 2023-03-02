@@ -2,6 +2,6 @@
 import "@hotwired/turbo-rails"
 import "./controllers"
 import "bootstrap"
-import "jquery"
-import "jquery_ujs"
-import "popper"
+import flatpickr from "flatpickr";
+import rangePlugin from "flatpickr/dist/plugins/rangePlugin";
+import "flatpickr/dist/flatpickr.min.css" // Note this is important!
