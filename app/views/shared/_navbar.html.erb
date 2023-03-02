@@ -3,12 +3,20 @@
     <%= link_to spaces_path, class:"navbar-brand" do %>
     <%= image_tag("spaces.png", height: '200', width: '200') %>
     <% end %>
-    <div class="pointer-events-none row position-absolute w-full md:justify-center">
+    <%# <div class="pointer-events-none row position-absolute w-full md:justify-center"> %>
       <div class="col-8 col-lg-3">
-        <input class="pointer-events-auto w-100 text-center p-2 border border-gray-300 text-gray-900 rounded-pill placeholder-gray-900"
-        type="search" placeholder="Search for spaces">
+        <%# <input class="pointer-events-auto w-100 text-center p-2 border border-gray-300 text-gray-900 rounded-pill placeholder-gray-900"
+        type="search" placeholder="Search for spaces"> %>
+        <%= form_with url: spaces_path, method: :get, class: "d-flex" do %>
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Find a space"
+          %>
+          <%= submit_tag "Search", class: "btn btn-primary" %>
+        <% end %>
       </div>
-    </div>
+    <%# </div> %>
     <div>
       <%= link_to "List your space", new_space_path, class:"nav-link d-flex" %>
       <%= link_to "My bookings", my_bookings_path, class:"nav-link"  %>

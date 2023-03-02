@@ -1,6 +1,15 @@
 class SpacesController < ApplicationController
   def index
     @spaces = Space.all
+    if params[:query].present?
+      sql_query = <<~SQL
+        spaces.title @@ :query
+        OR spaces.space_type @@ :query
+      SQL
+      @spaces = Space.where(sql_query, query: "%#{params[:query]}%")
+    else
+      @spaces = Space.all
+    end
   end
 
   def show
