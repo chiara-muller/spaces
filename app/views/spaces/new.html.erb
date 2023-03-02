@@ -8,7 +8,7 @@
           <%= item.input :address %>
           <%= item.input :title %>
           <%= item.input :price %>
-          <%= item.input :photo, as: :file %>
+          <%= item.input :photos, as: :file, input_html: { multiple: true } %>
           <%= item.submit "Submit", class: "btn btn-primary" %>
           <% end %>
     </div>
