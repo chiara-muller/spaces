@@ -2,19 +2,40 @@
   <div class ="row justify-content-center mt-3">
     <div class="col 12 col-lg-6 card-show mt-3">
       <div class="card h-100">
-        <%= cl_image_tag @space.photo.key || "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/claude-monets-house-and-gardens-in-giverny-france-news-photo-1042013294-1562610151.jpg?crop=1.00xw:0.753xh;0,0.0671xh&resize=640:*", class:"card-img-top mx-auto w-100" %>
-          <div class="card-body">
-            <h2><%= @space.title %></h2>
-            <p><strong>Space type:</strong> <%= @space.space_type %></p>
-            <p><strong>Address:</strong> <%= @space.address %></p>
-            <p><strong>Capacity:</strong> <%= @space.capacity %></p>
-            <p><strong>Price:</strong> $<%= @space.price %></p>
-          </div>
-          <div class="card-footer text-center">
-            <%= link_to "Book Now", new_space_booking_path(@space), class: "btn btn-primary" %>
-          </div>
+        <% if @space.photos.attached? %>
+          <% @space.photos.each do |photo| %>
+            <%= cl_image_tag photo.key, height: 300, crop: :fill %>
+          <% end %>
+        <% end %>
+        <div class="card-body">
+          <h2><%= @space.title %></h2>
+          <p><strong>Space type:</strong> <%= @space.space_type %></p>
+          <p><strong>Address:</strong> <%= @space.address %></p>
+          <p><strong>Capacity:</strong> <%= @space.capacity %></p>
+          <p><strong>Price:</strong> $<%= @space.price %></p>
+        </div>
+        <div class="card-footer text-center">
+          <%= link_to "Book Now", new_space_booking_path(@space), class: "btn btn-primary" %>
         </div>
       </div>
     </div>
   </div>
+</div>
+
+<div class="row g-3">
+<%= simple_form_for [@space, @booking] do |item| %>
+  <div class="col">
+<%= item.input :start_date_time, as: :date, html5: true, class: "form-control booking-start", data: { "disable-dates": "disableBookedDates" } %>
+<%= item.input :end_date_time, as: :date, html5: true, class: "form-control booking-end" %>
+  <%= item.submit "Book Space", class: "btn btn-primary" %>
+<% end %>
+
+All the bookings for this space are listed below:
+<div>
+    <% @space.bookings.each do |booking| %>
+      <div>
+        <strong>From</strong><td><%= booking.start_date_time %></td> <strong>To</strong>
+        <td><%= booking.end_date_time %></td>
+      </div>
+    <% end %>
 </div>

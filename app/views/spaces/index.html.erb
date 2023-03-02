@@ -10,16 +10,20 @@
     <% @spaces.each do |space| %>
       <div class="col mb-5">
         <div class="card h-100">
-            <%= cl_image_tag space.photo.key || "https://media.istockphoto.com/id/1335247217/vector/loading-icon-vector-illustration.jpg?s=612x612&w=0&k=20&c=jARr4Alv-d5U3bCa8eixuX2593e1rDiiWnvJLgHCkQM=", class:"card-img-top", height: 300, width: 400, crop: :fill %>
-            <div class="card-body">
-              <h5 class="card-title"><%= space.title %></h5>
-              <p class="card-text"><%= space.address %></p>
-              <p class="card-text">$<%= space.price %></p>
-            </div>
-            <div class="card-footer text-center">
-              <%= link_to "More Info",space_path(space), class: "btn btn-primary btn-info"  %>
-              <%# <%= link_to "Book Now", new_space_booking_path(space.id), class:"btn btn-primary" %>
-            </div>
+          <% if space.photos.attached? %>
+            <%= cl_image_tag space.photos.first.key, height: 300, crop: :fill %>
+          <% else %>
+            <%= cl_image_tag "https://media.istockphoto.com/id/1335247217/vector/loading-icon-vector-illustration.jpg?s=612x612&w=0&k=20&c=jARr4Alv-d5U3bCa8eixuX2593e1rDiiWnvJLgHCkQM=", class:"card-img-top", height: 300, crop: :fill %>
+          <% end %>
+          <div class="card-body">
+            <h5 class="card-title"><%= space.title %></h5>
+            <p class="card-text"><%= space.address %></p>
+            <p class="card-text">$<%= space.price %></p>
+          </div>
+          <div class="card-footer text-center">
+            <%= link_to "More Info",space_path(space), class: "btn btn-primary btn-info"  %>
+            <% <%= link_to "Book Now", new_space_booking_path(space.id), class:"btn btn-primary" %>
+          </div>
         </div>
       </div>
     <% end %>

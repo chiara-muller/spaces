@@ -1,0 +1,24 @@
+ <div class="container">
+  <div class ="row justify-content-center mt-5">
+    <div class="col 12 col-lg-6">
+        <div class="card-body" style="height: 300px; overflow-y: auto;">
+          <%# class="dark:bg-neutral-700 p-4 m-8 rounded-lg bg-white"> %>
+          <%# class="block rounded-lg bg-white p-10 m-8 dark:bg-neutral-700"> %>
+            <%# <%= cl_image_tag @space.photo.key, height: 300, width: 400, crop: :fill %>
+            <h2><%= @space.title %></h2>
+            <p><strong>Space type:</strong> <%= @space.space_type %></p>
+            <p><strong>Address:</strong> <%= @space.address %></p>
+            <p><strong>Capacity:</strong> <%= @space.capacity %></p>
+            <p><strong>Price:</strong> $<%= @space.price %></p>
+          <%= link_to "Delete",
+            space_path(@space),
+            data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
+            class: "btn btn-danger"
+          %>
+          <%= link_to "Edit", edit_space_path(@space), class:"btn btn-warning" %>
+          <%= link_to "All listings", spaces_path, class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
