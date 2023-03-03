@@ -9,7 +9,6 @@ class BookingsController < ApplicationController
   end
 
   def new
-    @user_id = 1
     @space = Space.find(params[:space_id])
     @booking = Booking.new
   end
@@ -18,11 +17,10 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @space = Space.find(params[:space_id])
     @booking.space = @space
-    @user_id = 1
-    @booking.user_id = @user_id
+    @booking.user = current_user
     if @booking.save
       flash[:success]
-      redirect_to bookings_path(@booking)
+      redirect_to my_bookings_path, status: :see_other
     else
       flash[:error] = @booking.errors.full_messages.join(', ')
       render :new, status: :unprocessable_entity
@@ -30,8 +28,7 @@ class BookingsController < ApplicationController
   end
 
   def all_my_bookings
-    @user_id = 1
-    @bookings = Booking.where(user_id: @user_id)
+    @bookings = Booking.where(user: current_user)
   end
 
   def show_my_bookings

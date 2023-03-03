@@ -24,7 +24,7 @@ class SpacesController < ApplicationController
 
   def create
     @space = Space.new(space_params)
-    @space.user_id = @user_id
+    @space.user = current_user
     if @space.save
       redirect_to confirm_listing_path(@space)
     else

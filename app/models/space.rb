@@ -6,7 +6,7 @@ class Space < ApplicationRecord
   validates :capacity, presence: true
 
   has_many :bookings
-  has_many :users, through: :bookings
+  belongs_to :user
   has_many_attached :photos
 
   def unavailable_dates

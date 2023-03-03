@@ -21,6 +21,10 @@
           <%= simple_form_for [@space, @booking] do |item| %>
             <%= item.input :start_date_time, as: :date, html5: true, class: "form-control booking-start", data: { "disable-dates": "disableBookedDates" } %>
             <%= item.input :end_date_time, as: :date, html5: true, class: "form-control booking-end" %>
+            <div class="card-footer text-center">
+              <%= item.submit %>
+              <%# link_to "Book Now", my_bookings_path(@space), class: "btn btn-primary" %>
+            </div>
           <% end %>
           All the bookings for this space are listed below:
           <div>
@@ -33,9 +37,6 @@
               </div>
           </div>
         </div>
-      </div>
-      <div class="card-footer text-center">
-        <%= link_to "Book Now", my_bookings_path(@space), class: "btn btn-primary" %>
       </div>
     </div>
   </div>
