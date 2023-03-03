@@ -1,0 +1,5 @@
+<% if @booking.errors.any? %>
+  alert("<%= j @booking.errors.full_messages.join(', ').html_safe %>");
+<% else %>
+  window.location.replace("<%= my_bookings_show_path(@booking) %>");
+<% end %>
