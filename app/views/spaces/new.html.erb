@@ -1,15 +1,15 @@
-<h1 class="text-center mt-3">List your space</h1>
-<div class="container">
+<div class="container mb-5 mt-5">
+  <h1 class="title text-center mt-3">List your space</h1>
   <div class="row justify-content-center mt-3">
     <div class="col 12 col-lg-6">
           <%= simple_form_for [@user_id, @space] do |item| %>
-          <%= item.input :capacity %>
-          <%= item.input :space_type %>
-          <%= item.input :address %>
           <%= item.input :title %>
-          <%= item.input :price %>
+          <%= item.input :space_type %>
+          <%= item.input :capacity, label: "Capacity (number of people)" %>
+          <%= item.input :address %>
+          <%= item.input :price, label: "Price (AUD)" %>
           <%= item.input :photos, as: :file, input_html: { multiple: true } %>
-          <%= item.submit "Submit", class: "btn btn-primary" %>
+          <%= item.submit "Submit", class: "button-5" %>
           <% end %>
     </div>
   </div>

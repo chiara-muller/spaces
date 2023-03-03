@@ -1,22 +1,28 @@
- <div class="container">
-  <div class ="row justify-content-center mt-5">
-    <div class="col 12 col-lg-6">
-        <div class="card-body" style="height: 300px; overflow-y: auto;">
-          <%# class="dark:bg-neutral-700 p-4 m-8 rounded-lg bg-white"> %>
-          <%# class="block rounded-lg bg-white p-10 m-8 dark:bg-neutral-700"> %>
-            <%# <%= cl_image_tag @space.photo.key, height: 300, width: 400, crop: :fill %>
-            <h2><%= @space.title %></h2>
-            <p><strong>Space type:</strong> <%= @space.space_type %></p>
-            <p><strong>Address:</strong> <%= @space.address %></p>
-            <p><strong>Capacity:</strong> <%= @space.capacity %></p>
-            <p><strong>Price:</strong> $<%= @space.price %></p>
+<div class="container mt-5 d-flex justify-content-center align-items-center">
+  <div class="row g-0">
+      <div class="col-md-4">
+          <% if @space.photos.attached? %>
+            <% @space.photos.each do |photo| %>
+              <%= cl_image_tag photo.key, class:"img-fluid rounded-start", height: 300, crop: :fill %>
+            <% end %>
+          <% end %>
+      </div>
+      <div class="col-md-8">
+        <div class="card-body p-5">
+          <h2 class="card-title mb-2"><%= @space.title %></h2>
+          <p class="card-text">Space type: <%= @space.space_type %></p>
+          <p class="card-text">Address: <%= @space.address %></p>
+          <p class="card-text">Capacity: <%= @space.capacity %></p>
+          <p class="card-price">Price: $<%= @space.price %></p>
+          <div class="card-footer mt-3">
           <%= link_to "Delete",
-            space_path(@space),
+            spaces_path,
             data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
             class: "btn btn-danger"
           %>
           <%= link_to "Edit", edit_space_path(@space), class:"btn btn-warning" %>
-          <%= link_to "All listings", spaces_path, class: "btn btn-primary" %>
+          <%= link_to "My listings", spaces_path, class: "btn btn-primary" %>
+          </div>
         </div>
       </div>
     </div>
