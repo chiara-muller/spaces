@@ -11,6 +11,8 @@
         <div class="card-body p-5">
           <h5 class="card-title mb-2"><%= booking.space.title %></h5>
           <p class="card-text"><%= booking.space.address %></p>
+          <p class="card-text"><%= booking.start_date_time %></p>
+          <p class="card-text"><%= booking.end_date_time %></p>
           <div>
             <%= link_to booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Cancel Booking for #{booking.space.title}?"} do %>
             <i class="fas fa-trash-alt"></i>

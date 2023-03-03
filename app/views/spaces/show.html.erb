@@ -14,19 +14,14 @@
         <p class="card-price">Price: $<%= @space.price %></p>
         <div class="booking_form mt-3">
           <div id='space-booking-dates' data-unavailable="<%= @space.unavailable_dates.to_json %>">
-          <%# <%= simple_form_for [@space, @booking = Booking.new], data: { controller: 'flatpickr' } do |item| %>
-          <%# <%= item.input :start_date_time, as: :string, input_html: { data: { flatpickr_target: "startTime" } } %> %>
-          <%# <%= item.input :end_date_time, as: :string, input_html: { data: { flatpickr_target: "endTime" } } %> %>
-          <%# <% end %>
           <%= simple_form_for [@space, @booking] do |item| %>
             <%= item.input :start_date_time, as: :date, html5: true, class: "form-control booking-start", data: { "disable-dates": "disableBookedDates" } %>
             <%= item.input :end_date_time, as: :date, html5: true, class: "form-control booking-end" %>
             <div class="card-footer text-center">
               <%= item.submit %>
-              <%# link_to "Book Now", my_bookings_path(@space), class: "btn btn-primary" %>
             </div>
           <% end %>
-          All the bookings for this space are listed below:
+          <%# All the bookings for this space are listed below: %>
           <div>
               <% @space.bookings.each do |booking| %>
                 <div>
