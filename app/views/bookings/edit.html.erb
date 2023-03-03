@@ -1,6 +1,14 @@
-<%= simple_form_for [@space, @booking] do |item| %>
-  <%= item.input :start_date_time, as: :date, html5: true %>
-  <%= item.input :end_date_time, as: :date, html5: true %>
-  <%=%>
-  <%= item.submit "Book Space", class: "btn btn-primary" %>
-<% end %>
+<div class ="row justify-content-center mt-3">
+  <div class="col 12 col-lg-6 card-show mt-3">
+    <div class="card h-100">
+        <div class="card-body p-5">
+          <%= simple_form_for [@space, @booking] do |item| %>
+            <%= item.input :start_date_time, as: :date, html5: true %>
+            <%= item.input :end_date_time, as: :date, html5: true %>
+            <%=%>
+            <%= item.submit "Edit booking", class: "btn btn-primary" %>
+          <% end %>
+        </div>
+    </div>
+  </div>
+</div>

@@ -1,16 +1,24 @@
-<% @bookings.each do |booking| %>
-  <div class="card" style="width: 18rem;">
-    <img class="card-img-top" src="..." alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title"><%= booking.space.title %></h5>
-        <p class="card-text"><%= booking.space.address %></p>
-      </div>
-      <div>
-        <%= link_to "More Info", my_bookings_show_path(id: booking.id) %>
-        <%= link_to booking_path(booking.id), data: {turbo_method: :delete, turbo_confirm: "Cancel Booking for #{booking.space.title}?"} do %>
-        <i class="fas fa-trash-alt"></i>
+
+<div class ="row justify-content-center mt-3">
+  <div class="col 12 col-lg-6 card-show mt-3">
+    <div class="card h-100">
+      <% @bookings.each do |booking| %>
+        <% if booking.space.photos.attached? %>
+          <% booking.space.photos.each do |photo| %>
+            <%= cl_image_tag photo.key, height: 300, crop: :fill %>
+          <% end %>
         <% end %>
-         <%= link_to "Edit", edit_booking_path(booking.id) %>
-      </div>
+        <div class="card-body p-5">
+          <h5 class="card-title mb-2"><%= booking.space.title %></h5>
+          <p class="card-text"><%= booking.space.address %></p>
+          <div>
+            <%= link_to booking_path(booking.id), data: {turbo_method: :delete, turbo_confirm: "Cancel Booking for #{booking.space.title}?"} do %>
+            <i class="fas fa-trash-alt"></i>
+            <% end %>
+            <%= link_to "Edit", edit_booking_path(booking.id) %>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
-<% end %>
+</div>
